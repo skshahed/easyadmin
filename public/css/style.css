@@ -12,7 +12,7 @@
 :root {
     --blue: #2a2185;
     --white: #fff;
-    --gray: #f5f5f5;
+    --gray: #d5d5d5;
     --black1: #222;
     --black2: #999;
 }
@@ -30,7 +30,7 @@ body {
 /* =============== Navigation ================ */
 .navigation {
     position: fixed;
-    width: 300px;
+    width: 250px;
     height: 100%;
     background: var(--blue);
     border-left: 10px solid var(--blue);
@@ -56,14 +56,15 @@ body {
     border-bottom-left-radius: 30px;
 }
 
-.navigation ul li:hover,
+/* .parent:not(:first-child):hover */
+.navigation ul li:not(:first-child):hover,
 .navigation ul li.hovered {
-    background-color: var(--white);
+    background-color: var(--gray);
 }
 
 .navigation ul li:nth-child(1) {
     margin-bottom: 40px;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .navigation ul li a {
@@ -74,7 +75,7 @@ body {
     text-decoration: none;
     color: var(--white);
 }
-.navigation ul li:hover a,
+.navigation ul li:not(:first-child):hover a,
 .navigation ul li.hovered a {
     color: var(--blue);
 }
@@ -101,9 +102,42 @@ body {
     white-space: nowrap;
 }
 
+.navigation ul li.activate {
+    background-color: var(--white);
+}
+
+.navigation ul li.activate a {
+    color: var(--blue);
+}
+
 /* --------- curve outside ---------- */
-.navigation ul li:hover a::before,
+.navigation ul li:not(:first-child):hover a::before,
 .navigation ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--gray);
+    pointer-events: none;
+}
+.navigation ul li:not(:first-child):hover a::after,
+.navigation ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--gray);
+    pointer-events: none;
+}
+.navigation ul li.activate a::before {
     content: "";
     position: absolute;
     right: 0;
@@ -115,8 +149,7 @@ body {
     box-shadow: 35px 35px 0 10px var(--white);
     pointer-events: none;
 }
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
+.navigation ul li.activate a::after {
     content: "";
     position: absolute;
     right: 0;
@@ -132,8 +165,8 @@ body {
 /* ===================== Main ===================== */
 .main {
     position: absolute;
-    width: calc(100% - 300px);
-    left: 300px;
+    width: calc(100% - 250px);
+    left: 250px;
     min-height: 100vh;
     background: var(--white);
     transition: 0.5s;
@@ -190,24 +223,6 @@ body {
     top: 0;
     left: 10px;
     font-size: 1.2rem;
-}
-
-.user {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.user img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* ======================= Cards ====================== */
@@ -408,10 +423,10 @@ body {
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
-        left: -300px;
+        left: -250px;
     }
     .navigation.active {
-        width: 300px;
+        width: 250px;
         left: 0;
     }
     .main {
@@ -419,7 +434,7 @@ body {
         left: 0;
     }
     .main.active {
-        left: 300px;
+        left: 250px;
     }
     .cardBox {
         grid-template-columns: repeat(2, 1fr);
@@ -444,9 +459,6 @@ body {
     }
     .cardHeader h2 {
         font-size: 20px;
-    }
-    .user {
-        min-width: 40px;
     }
     .navigation {
         width: 100%;

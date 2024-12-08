@@ -12,10 +12,6 @@
             </div>
         </div> --}}
 
-        
-        {{-- <div class="container"> --}}
-            
-
             <!-- ========================= Main ==================== -->
             {{-- <div class="main">
                 @livewire('navigation-menu') --}}
@@ -29,10 +25,6 @@
                             <input type="text" placeholder="Search here">
                             <ion-icon name="search-outline"></ion-icon>
                         </label>
-                    </div>
-
-                    <div class="user">
-                        <img src="assets/imgs/customer01.jpg" alt="">
                     </div>
                 </div> --}}
 
@@ -243,7 +235,6 @@
                     </div>
                 </div>
             {{-- </div> --}}
-        {{-- </div> --}}
 
     {{-- </div> --}}
 </x-app-layout>

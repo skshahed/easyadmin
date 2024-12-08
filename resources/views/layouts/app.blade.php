@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Easy Admin') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,15 +29,15 @@
                 <div class="navigation">
                     <ul>
                         <li>
-                            <a href="#">
-                                <span class="icon">
+                            <a href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                                <span class="icon inline">
                                     <ion-icon name="logo-apple"></ion-icon>
                                 </span>
-                                <span class="title">Brand Name</span>
+                                <span class="title inline">Easy Admin</span>
                             </a>
                         </li>
 
-                        <li>
+                        <li class="activate">
                             <a href="#">
                                 <span class="icon">
                                     <ion-icon name="home-outline"></ion-icon>
